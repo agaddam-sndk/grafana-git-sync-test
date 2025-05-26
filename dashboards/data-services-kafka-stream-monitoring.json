@@ -1,0 +1,1721 @@
+{
+  "apiVersion": "dashboard.grafana.app/v0alpha1",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "MeH7bHzWz"
+  },
+  "spec": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations \u0026 Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "description": "Kafka resource usage and throughput",
+    "editable": true,
+    "gnetId": 7589,
+    "graphTooltip": 0,
+    "iteration": 1565291186890,
+    "links": [],
+    "panels": [
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 65,
+        "panels": [
+          {
+            "columns": [],
+            "fontSize": "100%",
+            "gridPos": {
+              "h": 5,
+              "w": 24,
+              "x": 0,
+              "y": 1
+            },
+            "id": 67,
+            "links": [],
+            "pageSize": null,
+            "scroll": true,
+            "showHeader": true,
+            "sort": {
+              "col": 5,
+              "desc": true
+            },
+            "styles": [
+              {
+                "alias": "Time",
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "pattern": "Time",
+                "type": "hidden"
+              },
+              {
+                "alias": "Average Offset",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "decimals": null,
+                "mappingType": 1,
+                "pattern": "Value #A",
+                "thresholds": [],
+                "type": "number",
+                "unit": "none"
+              },
+              {
+                "alias": "Max Offset",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "decimals": null,
+                "mappingType": 1,
+                "pattern": "Value #C",
+                "thresholds": [],
+                "type": "number",
+                "unit": "none"
+              },
+              {
+                "alias": "Min Offset",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "decimals": null,
+                "mappingType": 1,
+                "pattern": "Value #B",
+                "thresholds": [],
+                "type": "number",
+                "unit": "none"
+              },
+              {
+                "alias": "Delta",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "decimals": null,
+                "mappingType": 1,
+                "pattern": "Value #D",
+                "thresholds": [],
+                "type": "number",
+                "unit": "none"
+              },
+              {
+                "alias": "",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "decimals": 2,
+                "mappingType": 1,
+                "pattern": "Value #E",
+                "thresholds": [],
+                "type": "hidden",
+                "unit": "short"
+              },
+              {
+                "alias": "Partition Furthest Behind",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "decimals": 2,
+                "mappingType": 1,
+                "pattern": "partition",
+                "thresholds": [],
+                "type": "number",
+                "unit": "short"
+              },
+              {
+                "alias": "",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "decimals": 2,
+                "pattern": "/.*/",
+                "thresholds": [],
+                "type": "number",
+                "unit": "short"
+              }
+            ],
+            "targets": [
+              {
+                "expr": "max(kafka_consumergroup_current_offset{service=~'$instance',consumergroup=~\"$consumergroup\"})by(consumergroup)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "intervalFactor": 1,
+                "refId": "C"
+              },
+              {
+                "expr": "min(kafka_consumergroup_current_offset{service=~'$instance',consumergroup=~\"$consumergroup\"})by(consumergroup)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "intervalFactor": 1,
+                "refId": "B"
+              },
+              {
+                "expr": "max(kafka_consumergroup_current_offset{service=~'$instance',consumergroup=~\"$consumergroup\"})by(consumergroup) - min(kafka_consumergroup_current_offset{service=~'$instance',consumergroup=~\"$consumergroup\"})by(consumergroup)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "refId": "D"
+              },
+              {
+                "expr": "sum(bottomk by(consumergroup)(1, kafka_consumergroup_current_offset{service=~'$instance',consumergroup=~\"$consumergroup\"}))by(consumergroup, partition)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "intervalFactor": 1,
+                "refId": "E"
+              },
+              {
+                "expr": "kafka_consumergroup_current_offset{service=~\"$instance\"}",
+                "format": "table",
+                "hide": true,
+                "instant": true,
+                "intervalFactor": 1,
+                "refId": "A"
+              }
+            ],
+            "title": "Consumer Group Offset Overview",
+            "transform": "table",
+            "type": "table"
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "fill": 1,
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 6
+            },
+            "id": 60,
+            "legend": {
+              "alignAsTable": true,
+              "avg": false,
+              "current": true,
+              "max": false,
+              "min": false,
+              "rightSide": true,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(kafka_consumergroup_current_offset{service=~'$instance',consumergroup=~\"$consumergroup\"})by(consumergroup)",
+                "format": "time_series",
+                "intervalFactor": 1,
+                "legendFormat": "{{ consumergroup }}",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Average Offset by Consumer Group",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "fill": 1,
+            "gridPos": {
+              "h": 10,
+              "w": 24,
+              "x": 0,
+              "y": 15
+            },
+            "id": 61,
+            "legend": {
+              "alignAsTable": true,
+              "avg": false,
+              "current": true,
+              "max": false,
+              "min": false,
+              "rightSide": true,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(kafka_consumergroup_current_offset{service=~'$instance',consumergroup=~\"$consumergroup\", topic=~\"$topic\", partition=~\"$partition\"})by(consumergroup, partition, topic)",
+                "format": "time_series",
+                "intervalFactor": 1,
+                "legendFormat": " ({{ consumergroup }}, {{ topic }}, {{ partition }})",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Consumer Group Offset (Consumer Group, Topic, Partition)",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          }
+        ],
+        "title": "Consumer Offset Metrics",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 1
+        },
+        "id": 44,
+        "panels": [
+          {
+            "columns": [],
+            "fontSize": "100%",
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 2
+            },
+            "id": 75,
+            "links": [],
+            "pageSize": null,
+            "scroll": true,
+            "showHeader": true,
+            "sort": {
+              "col": 0,
+              "desc": true
+            },
+            "styles": [
+              {
+                "alias": "Time",
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "pattern": "Time",
+                "type": "hidden"
+              },
+              {
+                "alias": "Topic Messages Consumed Per Minute",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "decimals": 2,
+                "mappingType": 1,
+                "pattern": "Value #A",
+                "thresholds": [],
+                "type": "number",
+                "unit": "short"
+              },
+              {
+                "alias": "Topic Messages Being Sent Per Minute",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "decimals": 2,
+                "mappingType": 1,
+                "pattern": "Value #B",
+                "thresholds": [],
+                "type": "number",
+                "unit": "short"
+              },
+              {
+                "alias": "",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "decimals": 2,
+                "pattern": "/.*/",
+                "thresholds": [],
+                "type": "number",
+                "unit": "short"
+              }
+            ],
+            "targets": [
+              {
+                "expr": "sum(delta(kafka_consumergroup_current_offset{service=~'$instance',consumergroup=~\"$consumergroup\", topic=~\"$topic\"}[5m])/5) by (consumergroup, topic)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "intervalFactor": 1,
+                "refId": "A"
+              },
+              {
+                "expr": "sum(delta(kafka_topic_partition_current_offset{service=~'$instance', topic=~\"$topic\", topic!~\"dcos.*\"}[5m])/5) by (topic)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "intervalFactor": 1,
+                "refId": "B"
+              }
+            ],
+            "title": "Consumer Group Message Rate Overview",
+            "transform": "table",
+            "type": "table"
+          },
+          {
+            "columns": [],
+            "fontSize": "100%",
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 11
+            },
+            "id": 78,
+            "links": [],
+            "pageSize": null,
+            "scroll": true,
+            "showHeader": true,
+            "sort": {
+              "col": 1,
+              "desc": false
+            },
+            "styles": [
+              {
+                "alias": "Time",
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "pattern": "Time",
+                "type": "hidden"
+              },
+              {
+                "alias": "Messages Consumed by Partition Per Minute",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "decimals": 2,
+                "mappingType": 1,
+                "pattern": "Value #A",
+                "thresholds": [],
+                "type": "number",
+                "unit": "short"
+              },
+              {
+                "alias": "Topic Messages sent to Partition Per Minute",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "decimals": 2,
+                "mappingType": 1,
+                "pattern": "Value #B",
+                "thresholds": [],
+                "type": "number",
+                "unit": "short"
+              },
+              {
+                "alias": "",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "decimals": 2,
+                "pattern": "/.*/",
+                "thresholds": [],
+                "type": "number",
+                "unit": "short"
+              }
+            ],
+            "targets": [
+              {
+                "expr": "sum(delta(kafka_consumergroup_current_offset{service=~'$instance', consumergroup=~\"$consumergroup\", topic=~\"$topic\", partition=~\"$partition\"}[5m])/5) by (partition, topic)",
+                "format": "table",
+                "instant": true,
+                "intervalFactor": 1,
+                "refId": "A"
+              },
+              {
+                "expr": "sum(delta(kafka_topic_partition_current_offset{service=~'$instance', topic=~\"$topic\", topic!~\"dcos.*\"}[5m])/5) by (topic)",
+                "format": "table",
+                "instant": true,
+                "intervalFactor": 1,
+                "refId": "B"
+              }
+            ],
+            "title": "Partion Message Summary",
+            "transform": "table",
+            "type": "table"
+          },
+          {
+            "aliasColors": {},
+            "bars": true,
+            "dashLength": 10,
+            "dashes": false,
+            "fill": 1,
+            "gridPos": {
+              "h": 10,
+              "w": 12,
+              "x": 0,
+              "y": 20
+            },
+            "id": 48,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": false,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "sum(delta(kafka_topic_partition_current_offset{service=~'$instance', topic=~\"$topic\"}[5m])/5) by (topic)",
+                "format": "time_series",
+                "intervalFactor": 1,
+                "legendFormat": "{{topic}}",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Messages in per Minute by Topic",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          },
+          {
+            "aliasColors": {},
+            "bars": true,
+            "dashLength": 10,
+            "dashes": false,
+            "fill": 1,
+            "gridPos": {
+              "h": 10,
+              "w": 12,
+              "x": 12,
+              "y": 20
+            },
+            "id": 28,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": false,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "sum(delta(kafka_consumergroup_current_offset{service=~'$instance',consumergroup=~\"$consumergroup\"}[5m])/5) by (consumergroup)",
+                "format": "time_series",
+                "intervalFactor": 1,
+                "legendFormat": "{{ consumergroup }}",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Messages Consumed Per Minute by Consumer Group",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          },
+          {
+            "aliasColors": {},
+            "bars": true,
+            "dashLength": 10,
+            "dashes": false,
+            "fill": 1,
+            "gridPos": {
+              "h": 10,
+              "w": 12,
+              "x": 0,
+              "y": 30
+            },
+            "id": 30,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": false,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "sum(delta(kafka_consumergroup_current_offset{service=~'$instance',consumergroup=~\"$consumergroup\", topic=~\"$topic\"}[5m])/5) by (consumergroup, topic)",
+                "format": "time_series",
+                "intervalFactor": 1,
+                "legendFormat": "{{ consumergroup }} - {{ topic }}",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Topic Messages Per Min Consumer Group Consumes (Consumer Group - Topic)",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          },
+          {
+            "aliasColors": {},
+            "bars": true,
+            "dashLength": 10,
+            "dashes": false,
+            "fill": 1,
+            "gridPos": {
+              "h": 10,
+              "w": 12,
+              "x": 12,
+              "y": 30
+            },
+            "id": 26,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "rightSide": true,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": false,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "sum(delta(kafka_consumergroup_current_offset{service=~'$instance',consumergroup=~\"$consumergroup\", topic=~\"$topic\", partition=~\"$partition\"}[5m])/5) by (consumergroup, topic, partition)",
+                "format": "time_series",
+                "hide": false,
+                "intervalFactor": 1,
+                "legendFormat": " ({{ consumergroup }}, {{ partition }}) -  {{ topic }}",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Topic Messages Consumed Per Minute by Consumer Group and Partition",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          }
+        ],
+        "title": "Consumer Group Message Rate Metrics",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 2
+        },
+        "id": 40,
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": true,
+            "dashLength": 10,
+            "dashes": false,
+            "fill": 1,
+            "gridPos": {
+              "h": 10,
+              "w": 12,
+              "x": 0,
+              "y": 3
+            },
+            "id": 20,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": false,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": true,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "sum(kafka_consumergroup_lag{service=~\"$instance\",consumergroup=~\"$consumergroup\"}) by (consumergroup) ",
+                "format": "time_series",
+                "intervalFactor": 1,
+                "legendFormat": "{{ consumergroup }}",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Lag by Consumer Group",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          },
+          {
+            "aliasColors": {},
+            "bars": true,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "thanos",
+            "fill": 0,
+            "gridPos": {
+              "h": 10,
+              "w": 12,
+              "x": 12,
+              "y": 3
+            },
+            "id": 12,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "rightSide": false,
+              "show": true,
+              "sideWidth": 480,
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": false,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": true,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "sum(kafka_consumergroup_lag{service=~\"$instance\",consumergroup=~\"$consumergroup\", topic=~\"$topic\"}) by (consumergroup, topic) ",
+                "format": "time_series",
+                "instant": false,
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "{{consumergroup}}, {{topic}}",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Lag by Consumer Group \u0026 Topic",
+            "tooltip": {
+              "shared": true,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          },
+          {
+            "aliasColors": {},
+            "bars": true,
+            "dashLength": 10,
+            "dashes": false,
+            "fill": 1,
+            "gridPos": {
+              "h": 10,
+              "w": 24,
+              "x": 0,
+              "y": 13
+            },
+            "id": 24,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "rightSide": true,
+              "show": true,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": false,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": true,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(kafka_consumergroup_lag{service=~\"$instance\",consumergroup=~\"$consumergroup\", topic=~\"$topic\", partition=~\"$partition\"})by(partition, topic, consumergroup)",
+                "format": "time_series",
+                "intervalFactor": 1,
+                "legendFormat": "{{ consumergroup }},    {{ topic }},     {{ partition }}",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Lag by Consumer Group, Topic, and Partition",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          },
+          {
+            "columns": [],
+            "fontSize": "100%",
+            "gridPos": {
+              "h": 9,
+              "w": 24,
+              "x": 0,
+              "y": 23
+            },
+            "id": 81,
+            "links": [],
+            "pageSize": null,
+            "scroll": true,
+            "showHeader": true,
+            "sort": {
+              "col": 0,
+              "desc": true
+            },
+            "styles": [
+              {
+                "alias": "Time",
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "pattern": "Time",
+                "type": "hidden"
+              },
+              {
+                "alias": "",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "decimals": 2,
+                "pattern": "/.*/",
+                "thresholds": [],
+                "type": "number",
+                "unit": "short"
+              }
+            ],
+            "targets": [
+              {
+                "expr": "avg(kafka_consumergroup_lag{service=~\"$instance\",consumergroup=~\"$consumergroup\", topic=~\"$topic\", partition=~\"$partition\"})by(topic, partition, consumergroup)",
+                "format": "table",
+                "instant": true,
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "refId": "A"
+              }
+            ],
+            "title": "Consumer Group Lag Summary",
+            "transform": "table",
+            "type": "table"
+          },
+          {
+            "columns": [],
+            "fontSize": "100%",
+            "gridPos": {
+              "h": 7,
+              "w": 24,
+              "x": 0,
+              "y": 32
+            },
+            "id": 83,
+            "links": [],
+            "pageSize": null,
+            "scroll": true,
+            "showHeader": true,
+            "sort": {
+              "col": 4,
+              "desc": true
+            },
+            "styles": [
+              {
+                "alias": "Time",
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "pattern": "Time",
+                "type": "hidden"
+              },
+              {
+                "alias": "Consumer Group Offset",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "decimals": null,
+                "mappingType": 1,
+                "pattern": "Value #A",
+                "thresholds": [],
+                "type": "number",
+                "unit": "none"
+              },
+              {
+                "alias": "Topic Offset",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "decimals": 0,
+                "mappingType": 1,
+                "pattern": "Value #B",
+                "thresholds": [],
+                "type": "number",
+                "unit": "none"
+              },
+              {
+                "alias": "Max Log End Offset",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "decimals": 0,
+                "mappingType": 1,
+                "pattern": "Value #C",
+                "thresholds": [],
+                "type": "number",
+                "unit": "none"
+              },
+              {
+                "alias": "Consumer Group Lag",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "decimals": 0,
+                "mappingType": 1,
+                "pattern": "Value #D",
+                "thresholds": [],
+                "type": "number",
+                "unit": "none"
+              },
+              {
+                "alias": "Min Log End Offset",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                "decimals": null,
+                "mappingType": 1,
+                "pattern": "Value #E",
+                "thresholds": [],
+                "type": "number",
+                "unit": "none"
+              },
+              {
+                "alias": "",
+                "colorMode": null,
+                "colors": [
+                  "rgba(245, 54, 54, 0.9)",
+                  "rgba(237, 129, 40, 0.89)",
+                  "rgba(50, 172, 45, 0.97)"
+                ],
+                "decimals": 2,
+                "pattern": "/.*/",
+                "thresholds": [],
+                "type": "number",
+                "unit": "short"
+              }
+            ],
+            "targets": [
+              {
+                "expr": "sum(kafka_consumergroup_current_offset{consumergroup=~\"$consumergroup\", topic=~\"$topic\", partition=~\"$partition\"})by(consumergroup, topic, partition)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "intervalFactor": 1,
+                "refId": "A"
+              },
+              {
+                "expr": "sum(kafka_topic_partition_current_offset{topic=~\"$topic\", partition=~\"$partition\"})by(topic, partition)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "intervalFactor": 1,
+                "refId": "B"
+              },
+              {
+                "expr": "sum(kafka_consumergroup_lag{consumergroup=~\"$consumergroup\", topic=~\"$topic\", partition=~\"$partition\"})by(consumergroup, topic, partition)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "intervalFactor": 1,
+                "refId": "D"
+              },
+              {
+                "expr": "min(kafka_log_log_logendoffset{topic=~\"$topic\"})by(topic)",
+                "format": "table",
+                "instant": true,
+                "intervalFactor": 1,
+                "refId": "E"
+              },
+              {
+                "expr": "max(kafka_log_log_logendoffset{topic=~\"$topic\"})by(topic)",
+                "format": "table",
+                "hide": false,
+                "instant": true,
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "refId": "C"
+              }
+            ],
+            "title": "Consumer Group Lag and Offset Metircs",
+            "transform": "table",
+            "type": "table"
+          }
+        ],
+        "title": "Lag Metrics",
+        "type": "row"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 3
+        },
+        "id": 89,
+        "panels": [],
+        "title": "Partition Metrics",
+        "type": "row"
+      },
+      {
+        "columns": [],
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 4
+        },
+        "id": 90,
+        "links": [],
+        "pageSize": null,
+        "scroll": true,
+        "showHeader": true,
+        "sort": {
+          "col": 0,
+          "desc": true
+        },
+        "styles": [
+          {
+            "alias": "Time",
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "pattern": "Time",
+            "type": "hidden"
+          },
+          {
+            "alias": "",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "decimals": 2,
+            "pattern": "/.*/",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          }
+        ],
+        "targets": [
+          {
+            "expr": "count(sum(kafka_topic_partition_current_offset{service=~\"$instance\", topic=~\"$topic\"})by(partition, topic))by(topic)",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "intervalFactor": 1,
+            "refId": "A"
+          },
+          {
+            "expr": "sum(kafka_topic_partition_current_offset{service=~\"$instance\", topic=~\"$topic\"})by(partition, topic)",
+            "format": "table",
+            "hide": true,
+            "instant": true,
+            "intervalFactor": 1,
+            "refId": "B"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Topic to Partition Count",
+        "transform": "table",
+        "type": "table"
+      },
+      {
+        "columns": [],
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 12
+        },
+        "id": 87,
+        "links": [],
+        "pageSize": null,
+        "scroll": true,
+        "showHeader": true,
+        "sort": {
+          "col": 0,
+          "desc": true
+        },
+        "styles": [
+          {
+            "alias": "Time",
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "pattern": "Time",
+            "type": "hidden"
+          },
+          {
+            "alias": "",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "decimals": 2,
+            "pattern": "/.*/",
+            "thresholds": [],
+            "type": "number",
+            "unit": "short"
+          }
+        ],
+        "targets": [
+          {
+            "expr": "count(sum(kafka_topic_partition_current_offset{service=~\"$instance\", topic=~\"$topic\"})by(partition, topic))by(partition)",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "intervalFactor": 1,
+            "refId": "A"
+          },
+          {
+            "expr": "sum(kafka_topic_partition_current_offset{service=~\"$instance\", topic=~\"$topic\"})by(partition, topic)",
+            "format": "table",
+            "hide": true,
+            "instant": true,
+            "intervalFactor": 1,
+            "refId": "B"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Partion to Topic Count",
+        "transform": "table",
+        "type": "table"
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 18,
+    "style": "dark",
+    "tags": [
+      "kafka",
+      "data-services"
+    ],
+    "templating": {
+      "list": [
+        {
+          "allValue": null,
+          "datasource": "thanos",
+          "definition": "",
+          "hide": 0,
+          "includeAll": false,
+          "label": "Instance",
+          "multi": false,
+          "name": "instance",
+          "options": [],
+          "query": "label_values(kafka_brokers{namespace=~\"fpe-tools-(stg)\"}, service)",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": "thanos",
+          "definition": "",
+          "hide": 0,
+          "includeAll": true,
+          "label": "Consumer Group",
+          "multi": true,
+          "name": "consumergroup",
+          "options": [],
+          "query": "label_values(kafka_consumergroup_lag{service='$instance',consumergroup!~\"_.*\"}, consumergroup)",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": "thanos",
+          "definition": "",
+          "hide": 0,
+          "includeAll": true,
+          "label": "Topic",
+          "multi": true,
+          "name": "topic",
+          "options": [],
+          "query": "label_values(kafka_topic_partition_current_offset{service='$instance',topic!='__consumer_offsets',topic!='--kafka', topic!~\"_.*\"}, topic)",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 1,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "topic",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": "thanos",
+          "definition": "",
+          "hide": 0,
+          "includeAll": true,
+          "label": "Partition",
+          "multi": true,
+          "name": "partition",
+          "options": [],
+          "query": "label_values(kafka_topic_partition_current_offset{service='$instance',topic!='__consumer_offsets',topic!='--kafka', topic!~\"_.*\"}, partition)",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 1,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "topic",
+          "type": "query",
+          "useTags": false
+        }
+      ]
+    },
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "timezone": "browser",
+    "title": "Data Services / Kafka Stream Monitoring"
+  },
+  "status": {}
+}
