@@ -110,7 +110,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "max_over_time(kube_pod_container_status_ready{job=\"kube-state-metrics\",namespace=~\"fpe-tools-(prd)\", pod=~\"$pod\"}[5m])",
+            "expr": "max_over_time(kube_pod_container_status_ready{job=\"kube-state-metrics\",namespace=~\"fpe-tools-(stg)\", pod=~\"$pod\"}[5m])",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
@@ -203,7 +203,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\", pod =~\"$pod\", namespace=~\"fpe-tools-(prd)\",reason=\"CrashLoopBackOff\"}[5m])",
+            "expr": "max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\", pod =~\"$pod\", namespace=~\"fpe-tools-(stg)\",reason=\"CrashLoopBackOff\"}[5m])",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
@@ -300,7 +300,7 @@
               "uid": "PC96415006F908B67"
             },
             "editorMode": "code",
-            "expr": "sum(increase(kube_pod_container_status_restarts_total{namespace=~\"fpe-tools-(prd)\", pod=~ \"$pod\"}[5m]))",
+            "expr": "sum(increase(kube_pod_container_status_restarts_total{namespace=~\"fpe-tools-(stg)\", pod=~ \"$pod\"}[5m]))",
             "range": true,
             "refId": "A"
           }
@@ -392,13 +392,13 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "sum by (pod) (container_memory_working_set_bytes{container!=\"\",pod=~\"$pod\", namespace=~\"fpe-tools-(prd)\"})/ (1024 * 1024 * 1024)",
+            "expr": "sum by (pod) (container_memory_working_set_bytes{container!=\"\",pod=~\"$pod\", namespace=~\"fpe-tools-(stg)\"})/ (1024 * 1024 * 1024)",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
           }
         ],
-        "title": "Memeory Usage GB (WSS)",
+        "title": "Memory Usage GB (WSS)",
         "type": "timeseries"
       },
       {
