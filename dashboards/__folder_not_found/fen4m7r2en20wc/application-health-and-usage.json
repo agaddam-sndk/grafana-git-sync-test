@@ -582,7 +582,7 @@
               "uid": "PC96415006F908B67"
             },
             "editorMode": "code",
-            "expr": "sum by (pod) (container_memory_usage_bytes{container!=\"\",pod=~\"$pod\", namespace=~\"fpe-tools-(prd)\"})/ (1024 * 1024 * 1024)",
+            "expr": "sum by (pod) (container_memory_usage_bytes{container!=\"\",pod=~\"$pod\", namespace=~\"fpe-tools-(stg)\"})/ (1024 * 1024 * 1024)",
             "range": true,
             "refId": "A"
           }
@@ -741,7 +741,7 @@
               "uid": "PC96415006F908B67"
             },
             "editorMode": "code",
-            "expr": "sum(kube_pod_status_phase{phase=\"Running\", namespace=~\"fpe-tools-(prd)\"})",
+            "expr": "sum(kube_pod_status_phase{phase=\"Running\", namespace=~\"fpe-tools-(stg)\"})",
             "range": true,
             "refId": "A"
           }
