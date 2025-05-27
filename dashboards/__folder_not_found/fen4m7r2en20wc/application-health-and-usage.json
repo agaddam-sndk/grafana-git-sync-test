@@ -582,7 +582,7 @@
               "uid": "PC96415006F908B67"
             },
             "editorMode": "code",
-            "expr": "sum by (container, pod) (container_memory_usage_bytes{container!=\"\",pod=~\"$pod\", namespace=~\"fpe-tools-(stg)\"})/ (1024 * 1024 * 1024)",
+            "expr": "(sum by (container, pod) (container_memory_usage_bytes{container!=\"\",pod=~\"$pod\", namespace=~\"fpe-tools-(stg)\"}))/ (1024 * 1024 * 1024)",
             "range": true,
             "refId": "A"
           }
