@@ -392,7 +392,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "sum by (pod) (container_memory_working_set_bytes{container!=\"\",pod=~\"$pod\", namespace=~\"fpe-tools-(stg)\"})/ (1024 * 1024 * 1024)",
+            "expr": "(sum by (pod, container) (container_memory_working_set_bytes{container!=\"\",pod=~\"$pod\", namespace=~\"fpe-tools-(stg)\"}))/ (1024 * 1024 * 1024)",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
@@ -485,7 +485,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "sum by (pod) (100 * (container_memory_working_set_bytes{pod=~\"$pod\", container!=\"\", container!~\"POD\"} / container_spec_memory_limit_bytes{pod=~\"$pod\", container!=\"\", container!~\"POD\"}))",
+            "expr": "100 * (sum by (pod, container) (container_memory_working_set_bytes{pod=~\"$pod\", container!=\"\", container!~\"POD\"} ) / sum by (pod, container) (container_spec_memory_limit_bytes{pod=~\"$pod\", container!=\"\", container!~\"POD\"} ))",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
@@ -582,7 +582,7 @@
               "uid": "PC96415006F908B67"
             },
             "editorMode": "code",
-            "expr": "sum by (pod) (container_memory_usage_bytes{container!=\"\",pod=~\"$pod\", namespace=~\"fpe-tools-(stg)\"})/ (1024 * 1024 * 1024)",
+            "expr": "sum by (container, pod) (container_memory_usage_bytes{container!=\"\",pod=~\"$pod\", namespace=~\"fpe-tools-(stg)\"})/ (1024 * 1024 * 1024)",
             "range": true,
             "refId": "A"
           }
@@ -677,7 +677,7 @@
               "uid": "PC96415006F908B67"
             },
             "editorMode": "code",
-            "expr": "sum by (pod) (rate(container_cpu_usage_seconds_total{container!=\"\", pod=~\"$pod\", namespace=\"fpe-tools-stg\"}[5m]))",
+            "expr": "sum by (pod, container) (rate(container_cpu_usage_seconds_total{container!=\"\", pod=~\"$pod\", namespace=\"fpe-tools-stg\"}[5m]))",
             "range": true,
             "refId": "A"
           }
