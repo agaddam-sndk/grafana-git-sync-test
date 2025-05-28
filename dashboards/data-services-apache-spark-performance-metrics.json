@@ -1,0 +1,3582 @@
+{
+  "apiVersion": "dashboard.grafana.app/v0alpha1",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "fuAwT6hnk"
+  },
+  "spec": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations \u0026 Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "description": "Monitors spark metrics using Prometheus in Kubernetes",
+    "editable": true,
+    "gnetId": 7890,
+    "graphTooltip": 0,
+    "iteration": 1640095682613,
+    "links": [],
+    "panels": [
+      {
+        "collapsed": false,
+        "datasource": null,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 42,
+        "panels": [],
+        "title": "Driver Info",
+        "type": "row"
+      },
+      {
+        "datasource": null,
+        "editable": true,
+        "error": false,
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 0,
+          "y": 1
+        },
+        "height": "1px",
+        "id": 34,
+        "isNew": true,
+        "links": [],
+        "options": {
+          "content": "# $Pod_ip",
+          "mode": "markdown"
+        },
+        "pluginVersion": "8.0.5",
+        "repeat": "Pod",
+        "repeatDirection": "v",
+        "style": {
+          "font-size": "72pt"
+        },
+        "title": "Driver IP Address",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": null,
+        "editable": true,
+        "error": false,
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 4,
+          "y": 1
+        },
+        "height": "1px",
+        "id": 35,
+        "isNew": true,
+        "links": [],
+        "options": {
+          "content": "# $phase",
+          "mode": "markdown"
+        },
+        "pluginVersion": "8.0.5",
+        "repeat": "Pod",
+        "repeatDirection": "v",
+        "title": "Driver Status",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "cacheTimeout": null,
+        "datasource": null,
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 8,
+          "y": 1
+        },
+        "id": 60,
+        "interval": null,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum (container_memory_usage_bytes{pod=~\"^$Pod$\",namespace=\"$namespace\"})",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 2,
+            "legendFormat": "",
+            "refId": "A",
+            "step": 40
+          }
+        ],
+        "title": "Total Memory",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "cacheTimeout": null,
+        "datasource": null,
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 12,
+          "y": 1
+        },
+        "id": 39,
+        "interval": null,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(rate(container_cpu_usage_seconds_total{pod=~\"^$Pod$\",namespace=\"$namespace\"}[1m]))",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 2,
+            "legendFormat": "",
+            "refId": "A",
+            "step": 40
+          }
+        ],
+        "title": "Total CPU Cores",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "collapsed": false,
+        "datasource": null,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 5
+        },
+        "id": 44,
+        "panels": [],
+        "title": "Driver Resource usage",
+        "type": "row"
+      },
+      {
+        "cacheTimeout": null,
+        "datasource": null,
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "rgba(50, 172, 45, 0.97)",
+                  "value": null
+                },
+                {
+                  "color": "rgba(237, 129, 40, 0.89)",
+                  "value": 65
+                },
+                {
+                  "color": "rgba(245, 54, 54, 0.9)",
+                  "value": 90
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 12,
+          "x": 0,
+          "y": 6
+        },
+        "id": 4,
+        "interval": null,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "text": {}
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": " sum (container_memory_working_set_bytes{pod=~\"^$Pod$\",namespace=\"$namespace\"}) /sum (container_memory_usage_bytes{pod=~\"^$Pod$\",namespace=\"$namespace\"}) * 100",
+            "format": "time_series",
+            "instant": false,
+            "interval": "10s",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A",
+            "step": 10
+          }
+        ],
+        "title": "Driver Memory Usage",
+        "type": "gauge"
+      },
+      {
+        "cacheTimeout": null,
+        "datasource": null,
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "rgba(50, 172, 45, 0.97)",
+                  "value": null
+                },
+                {
+                  "color": "rgba(237, 129, 40, 0.89)",
+                  "value": 65
+                },
+                {
+                  "color": "rgba(245, 54, 54, 0.9)",
+                  "value": 90
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 12,
+          "x": 12,
+          "y": 6
+        },
+        "id": 62,
+        "interval": null,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "text": {}
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": " sum (container_memory_working_set_bytes{pod=~\"^$executor$\",namespace=\"$namespace\"}) /sum (container_memory_usage_bytes{pod=~\"^$executor$\",namespace=\"$namespace\"}) * 100",
+            "format": "time_series",
+            "instant": false,
+            "interval": "10s",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A",
+            "step": 10
+          }
+        ],
+        "title": "Executor Memory Usage",
+        "type": "gauge"
+      },
+      {
+        "cacheTimeout": null,
+        "datasource": null,
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 12,
+          "x": 0,
+          "y": 11
+        },
+        "id": 36,
+        "interval": null,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum (container_memory_working_set_bytes{pod=~\"^$Pod$\",namespace=\"$namespace\"})",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A",
+            "step": 40
+          }
+        ],
+        "title": "Used",
+        "type": "stat"
+      },
+      {
+        "cacheTimeout": null,
+        "datasource": null,
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 12,
+          "x": 12,
+          "y": 11
+        },
+        "id": 63,
+        "interval": null,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum (container_memory_working_set_bytes{pod=~\"^$executor$\",namespace=\"$namespace\"})",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A",
+            "step": 40
+          }
+        ],
+        "title": "Used",
+        "type": "stat"
+      },
+      {
+        "collapsed": false,
+        "datasource": null,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 14
+        },
+        "id": 45,
+        "panels": [],
+        "title": "Driver CPU / Memory  usage",
+        "type": "row"
+      },
+      {
+        "aliasColors": {},
+        "bars": true,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "decimals": 2,
+        "editable": true,
+        "error": false,
+        "fill": 0,
+        "fillGradient": 0,
+        "grid": {},
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 15
+        },
+        "hiddenSeries": false,
+        "id": 25,
+        "isNew": true,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": false,
+          "rightSide": false,
+          "show": true,
+          "sideWidth": 200,
+          "sort": "current",
+          "sortDesc": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 2,
+        "links": [],
+        "nullPointMode": "connected",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "repeat": "Pod",
+        "repeatDirection": "v",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(rate(container_memory_working_set_bytes{pod=\"$Pod\",namespace=\"$namespace\"}[2m])) by (pod)",
+            "format": "time_series",
+            "interval": "10s",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod_name }}",
+            "metric": "container_memory_usage:sort_desc",
+            "refId": "A",
+            "step": 10
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Driver Memory Usage",
+        "tooltip": {
+          "msResolution": false,
+          "shared": true,
+          "sort": 2,
+          "value_type": "cumulative"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "bytes",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "decimals": 3,
+        "editable": true,
+        "error": false,
+        "fill": 0,
+        "fillGradient": 0,
+        "grid": {},
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 15
+        },
+        "height": "",
+        "hiddenSeries": false,
+        "id": 17,
+        "isNew": true,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": false,
+          "rightSide": false,
+          "show": true,
+          "sideWidth": 200,
+          "sort": null,
+          "sortDesc": null,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 2,
+        "links": [],
+        "nullPointMode": "connected",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": true,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(rate(container_cpu_usage_seconds_total{pod=~\"^$Pod$\",namespace=\"$namespace\"} [2m])) by (pod) ",
+            "format": "time_series",
+            "hide": false,
+            "interval": "10s",
+            "intervalFactor": 1,
+            "legendFormat": "Used CPU : {{ pod_name }}",
+            "metric": "container_cpu",
+            "refId": "A",
+            "step": 10
+          },
+          {
+            "exemplar": true,
+            "expr": "sum(container_cpu_usage_seconds_total{pod=~\"^$Pod$\", container_name!=\"POD\",namespace=\"$namespace\"}) by (container_name)",
+            "format": "time_series",
+            "hide": true,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "B"
+          },
+          {
+            "exemplar": true,
+            "expr": "sum(container_spec_cpu_shares{pod=\"$Pod\", container_name!=\"POD\",namespace=\"$namespace\"}) by (container_name) / 1000",
+            "format": "time_series",
+            "hide": true,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "Requested CPU",
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Driver CPU usage",
+        "tooltip": {
+          "msResolution": true,
+          "shared": true,
+          "sort": 2,
+          "value_type": "cumulative"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "none",
+            "label": "CPU Time",
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 15
+        },
+        "hiddenSeries": false,
+        "id": 59,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": true,
+        "steppedLine": true,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "jvm_gc_collection_seconds_count{pod=~\"$Pod\",gc=\"Copy\",namespace=\"$namespace\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ gc }}",
+            "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "jvm_gc_collection_seconds_count{pod=~\"$Pod\",gc=\"MarkSweepCompact\",namespace=\"$namespace\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ gc }}",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Driver GC : Seconds",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "s",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "collapsed": false,
+        "datasource": null,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 23
+        },
+        "id": 46,
+        "panels": [],
+        "repeat": null,
+        "title": "Executor CPU /Memory Usage",
+        "type": "row"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "decimals": 2,
+        "editable": true,
+        "error": false,
+        "fill": 0,
+        "fillGradient": 0,
+        "grid": {},
+        "gridPos": {
+          "h": 7,
+          "w": 12,
+          "x": 0,
+          "y": 24
+        },
+        "hiddenSeries": false,
+        "id": 28,
+        "isNew": true,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": false,
+          "rightSide": false,
+          "show": true,
+          "sideWidth": 200,
+          "sort": "current",
+          "sortDesc": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 3,
+        "links": [],
+        "nullPointMode": "connected",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": true,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(rate(container_memory_working_set_bytes{pod=~\"$executor\",namespace=\"$namespace\"}[2m])) by (pod)",
+            "format": "time_series",
+            "interval": "10s",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }}",
+            "metric": "container_memory_usage:sort_desc",
+            "refId": "A",
+            "step": 10
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Executor :  Memory Usage",
+        "tooltip": {
+          "msResolution": false,
+          "shared": true,
+          "sort": 2,
+          "value_type": "cumulative"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "bytes",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "decimals": 3,
+        "editable": true,
+        "error": false,
+        "fill": 0,
+        "fillGradient": 0,
+        "grid": {},
+        "gridPos": {
+          "h": 7,
+          "w": 6,
+          "x": 12,
+          "y": 24
+        },
+        "hiddenSeries": false,
+        "id": 20,
+        "isNew": true,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": false,
+          "rightSide": false,
+          "show": true,
+          "sort": "current",
+          "sortDesc": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 3,
+        "links": [],
+        "nullPointMode": "connected",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "repeat": null,
+        "repeatDirection": "h",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": true,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(rate(container_cpu_usage_seconds_total{pod=~\"$executor\",namespace=\"$namespace\"} [4m])) by (pod) ",
+            "format": "time_series",
+            "hide": false,
+            "interval": "10s",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod_name }}",
+            "metric": "container_cpu",
+            "refId": "A",
+            "step": 10
+          },
+          {
+            "exemplar": true,
+            "expr": "sum(container_cpu_usage_seconds_total{pod=~\"$executor\", container!=\"POD\",namespace=\"$namespace\"}) by (pod) / 1000",
+            "format": "time_series",
+            "hide": true,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod_name }}",
+            "refId": "B"
+          },
+          {
+            "expr": "sum(container_spec_cpu_shares{pod_name=~\"$executor\", container_name!=\"POD\",namespace=\"$namespace\"}) by (pod_name) / 1000",
+            "format": "time_series",
+            "hide": true,
+            "instant": false,
+            "intervalFactor": 1,
+            "legendFormat": "Requested {{ pod_name }}",
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Executor  :  CPU usage",
+        "tooltip": {
+          "msResolution": true,
+          "shared": true,
+          "sort": 2,
+          "value_type": "cumulative"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "none",
+            "label": "CPU Time",
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "decimals": null,
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 7,
+          "w": 6,
+          "x": 18,
+          "y": 24
+        },
+        "hiddenSeries": false,
+        "id": 61,
+        "legend": {
+          "alignAsTable": true,
+          "avg": false,
+          "current": true,
+          "max": true,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": true,
+        "steppedLine": true,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "jvm_gc_collection_seconds_count{pod=~\"$executor\",gc=\"Copy\",namespace=\"$namespace\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }} {{ gc }}",
+            "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "jvm_gc_collection_seconds_count{pod=~\"$executor\",gc=\"MarkSweepCompact\",namespace=\"$namespace\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }} {{ gc }}",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Executor GC : Seconds",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "s",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "collapsed": false,
+        "datasource": null,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 31
+        },
+        "id": 71,
+        "panels": [],
+        "title": "Network IO",
+        "type": "row"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 10,
+          "x": 0,
+          "y": 32
+        },
+        "hiddenSeries": false,
+        "id": 69,
+        "legend": {
+          "avg": true,
+          "current": false,
+          "max": true,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(rate(container_network_receive_bytes_total{pod=~'$Pod',namespace=\"$namespace\"}[2m])) by (pod)",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }}  Received",
+            "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "sum(rate(container_network_transmit_bytes_total{pod=~'$Pod',namespace=\"$namespace\"}[2m])) by (pod)",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }}  Transmitted",
+            "refId": "B"
+          },
+          {
+            "expr": "",
+            "format": "time_series",
+            "hide": true,
+            "intervalFactor": 1,
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Driver Network I/O",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "decbytes",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 7,
+          "x": 10,
+          "y": 32
+        },
+        "hiddenSeries": false,
+        "id": 72,
+        "legend": {
+          "avg": true,
+          "current": false,
+          "max": true,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(rate(container_network_transmit_bytes_total{pod=~'$executor',namespace=\"$namespace\"}[2m])) by (pod,node)",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }} {{ node }} Transmitted",
+            "refId": "B"
+          },
+          {
+            "expr": "",
+            "format": "time_series",
+            "hide": true,
+            "intervalFactor": 1,
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Executor Network Transmitted",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "decbytes",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 7,
+          "x": 17,
+          "y": 32
+        },
+        "hiddenSeries": false,
+        "id": 73,
+        "legend": {
+          "avg": true,
+          "current": false,
+          "max": true,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(rate(container_network_receive_bytes_total{pod=~'$executor',pod!=\"pod\",namespace=\"$namespace\"}[2m])) by (pod,node)",
+            "format": "time_series",
+            "hide": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }} {{ node }}  Received",
+            "refId": "A"
+          },
+          {
+            "expr": "",
+            "format": "time_series",
+            "hide": true,
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "B"
+          },
+          {
+            "expr": "",
+            "format": "time_series",
+            "hide": true,
+            "intervalFactor": 1,
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Executor Network Received",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "decbytes",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "collapsed": false,
+        "datasource": null,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 40
+        },
+        "id": 82,
+        "panels": [],
+        "title": "Disk IO",
+        "type": "row"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 0,
+          "y": 41
+        },
+        "hiddenSeries": false,
+        "id": 93,
+        "legend": {
+          "avg": true,
+          "current": false,
+          "max": true,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(rate(container_fs_reads_bytes_total{pod=~\"$Pod|$executor\",device=~\"/dev/sd[a|c|e]\",namespace=\"$namespace\"}[2m])) by (pod,device)",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }} {{ device }} Read",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Disk Read Bytes",
+        "tooltip": {
+          "shared": true,
+          "sort": 2,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "bytes",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 12,
+          "y": 41
+        },
+        "hiddenSeries": false,
+        "id": 92,
+        "legend": {
+          "avg": true,
+          "current": false,
+          "max": true,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$Pod|$executor\",device=~\"/dev/sd[a|c|e]\",namespace=\"$namespace\"}[2m])) by (pod,device)",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }} {{ device }} Write",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Disk Writes Bytes",
+        "tooltip": {
+          "shared": true,
+          "sort": 2,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "bytes",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "collapsed": false,
+        "datasource": null,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 50
+        },
+        "id": 89,
+        "panels": [],
+        "title": "Spark External Shuffle",
+        "type": "row"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 51
+        },
+        "hiddenSeries": false,
+        "id": 90,
+        "legend": {
+          "avg": true,
+          "current": false,
+          "max": true,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(rate(container_network_transmit_bytes_total{pod=~'.*shuffle.*',namespace=\"$namespace\"}[2m])) by (pod,node)",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }} {{ node }} Transmitted",
+            "refId": "B"
+          },
+          {
+            "expr": "",
+            "format": "time_series",
+            "hide": true,
+            "intervalFactor": 1,
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Spark Shuffle Network Transmitted",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "decbytes",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 6,
+          "y": 51
+        },
+        "hiddenSeries": false,
+        "id": 91,
+        "legend": {
+          "avg": true,
+          "current": false,
+          "max": true,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(spark_executor_shuffletotalbytesread_type_counters_count{pod=~\"^$executor$\",namespace=\"$namespace\"})",
+            "format": "time_series",
+            "hide": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }} {{ node }}  Received",
+            "refId": "A"
+          },
+          {
+            "expr": "",
+            "format": "time_series",
+            "hide": true,
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "B"
+          },
+          {
+            "expr": "",
+            "format": "time_series",
+            "hide": true,
+            "intervalFactor": 1,
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Spark Shuffle Network Received",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "decbytes",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 51
+        },
+        "hiddenSeries": false,
+        "id": 85,
+        "legend": {
+          "avg": true,
+          "current": false,
+          "max": true,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(spark_executor_shuffletotalbytesread_type_counters_count{pod=~\"^$executor$\",namespace=\"$namespace\"})",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }} {{ device }} Read",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Disk Read Bytes",
+        "tooltip": {
+          "shared": true,
+          "sort": 2,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "bytes",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 51
+        },
+        "hiddenSeries": false,
+        "id": 84,
+        "legend": {
+          "avg": true,
+          "current": false,
+          "max": true,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(spark_executor_shufflebyteswritten_type_counters_count{pod=~\"^$executor$\",namespace=\"$namespace\"})",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }} {{ device }} Write",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Disk Writes Bytes",
+        "tooltip": {
+          "shared": true,
+          "sort": 2,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "bytes",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "collapsed": false,
+        "datasource": null,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 59
+        },
+        "id": 49,
+        "panels": [],
+        "title": "Memory Heap / Non - Heap",
+        "type": "row"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "decimals": 2,
+        "editable": true,
+        "error": false,
+        "fill": 1,
+        "fillGradient": 0,
+        "grid": {},
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 0,
+          "y": 60
+        },
+        "hiddenSeries": false,
+        "id": 16,
+        "isNew": true,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": false,
+          "rightSide": false,
+          "show": true,
+          "sideWidth": 200,
+          "sort": "current",
+          "sortDesc": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 2,
+        "links": [],
+        "nullPointMode": "connected",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "jvm_memory_bytes_used{pod=~\"^$Pod$\",area=\"heap\",namespace=\"$namespace\"} ",
+            "format": "time_series",
+            "interval": "10s",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }} ",
+            "metric": "network",
+            "refId": "A",
+            "step": 10
+          },
+          {
+            "exemplar": true,
+            "expr": "jvm_memory_bytes_used{pod=~\"^$executor$\",area=\"heap\",namespace=\"$namespace\"}",
+            "format": "time_series",
+            "interval": "10s",
+            "intervalFactor": 1,
+            "legendFormat": " {{ pod }} ",
+            "metric": "network",
+            "refId": "B",
+            "step": 10
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Heap Memory",
+        "tooltip": {
+          "msResolution": false,
+          "shared": true,
+          "sort": 2,
+          "value_type": "cumulative"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "bytes",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "decimals": 2,
+        "editable": true,
+        "error": false,
+        "fill": 1,
+        "fillGradient": 0,
+        "grid": {},
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 12,
+          "y": 60
+        },
+        "hiddenSeries": false,
+        "id": 29,
+        "isNew": true,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": false,
+          "rightSide": false,
+          "show": true,
+          "sideWidth": 200,
+          "sort": "current",
+          "sortDesc": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 2,
+        "links": [],
+        "nullPointMode": "connected",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "jvm_memory_bytes_used{pod=~\"$Pod\",area=\"nonheap\",namespace=\"$namespace\"}",
+            "format": "time_series",
+            "interval": "10s",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }}",
+            "metric": "network",
+            "refId": "A",
+            "step": 10
+          },
+          {
+            "exemplar": true,
+            "expr": "jvm_memory_bytes_used{pod=~\"$executor\",area=\"nonheap\",namespace=\"$namespace\"}",
+            "format": "time_series",
+            "interval": "10s",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }}",
+            "metric": "network",
+            "refId": "B",
+            "step": 10
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Non Heap Memory",
+        "tooltip": {
+          "msResolution": false,
+          "shared": true,
+          "sort": 2,
+          "value_type": "cumulative"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "decbytes",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "collapsed": false,
+        "datasource": null,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 69
+        },
+        "id": 52,
+        "panels": [],
+        "title": "JVM Threads \u0026 Memory Pool",
+        "type": "row"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 70
+        },
+        "hiddenSeries": false,
+        "id": 55,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(jvm_memory_pool_bytes_used{pod=~\"$executor\",namespace=\"$namespace\"}) by (pod,pool)",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }} {{ pool }}",
+            "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "sum(jvm_memory_pool_bytes_used{pod=~\"$Pod\",namespace=\"$namespace\"}) by (name,pool)",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }} {{ pool }}",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Memory Pool",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "bytes",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "decimals": 0,
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 6,
+          "x": 0,
+          "y": 79
+        },
+        "hiddenSeries": false,
+        "id": 54,
+        "legend": {
+          "alignAsTable": true,
+          "avg": true,
+          "current": true,
+          "max": true,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(jvm_threads_current{pod=~\"$executor\",namespace=\"$namespace\"}) by (pod)",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ kubernetes_pod_name }}",
+            "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "sum(jvm_threads_current{pod=~\"$Pod\",namespace=\"$namespace\"}) by (pod)",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ name }}",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "JVM Threads",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "decimals": 0,
+            "format": "none",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "decimals": 0,
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "fill": 0,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 10,
+          "x": 6,
+          "y": 79
+        },
+        "hiddenSeries": false,
+        "id": 64,
+        "legend": {
+          "alignAsTable": true,
+          "avg": false,
+          "current": true,
+          "max": true,
+          "min": false,
+          "rightSide": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": true,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "spark_executor_succeededtasks_type_counters_count{pod=~\"$executor\",namespace=\"$namespace\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod }}",
+            "refId": "A"
+          },
+          {
+            "expr": "",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Executor : Completed Tasks",
+        "tooltip": {
+          "shared": true,
+          "sort": 1,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "none",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "decimals": 0,
+        "fill": 0,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 8,
+          "x": 16,
+          "y": 79
+        },
+        "hiddenSeries": false,
+        "id": 65,
+        "legend": {
+          "alignAsTable": true,
+          "avg": false,
+          "current": true,
+          "max": true,
+          "min": false,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": true,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "spark_executor_executor_threadpool_activetasks{pod=~\"$executor\",namespace=\"$namespace\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{pod }}",
+            "refId": "A"
+          },
+          {
+            "expr": "",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Executor : Active Tasks",
+        "tooltip": {
+          "shared": true,
+          "sort": 1,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "none",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "collapsed": false,
+        "datasource": null,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 88
+        },
+        "id": 76,
+        "panels": [],
+        "title": "Miscellaneous Info",
+        "type": "row"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "decimals": 0,
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 8,
+          "x": 0,
+          "y": 89
+        },
+        "hiddenSeries": false,
+        "id": 78,
+        "legend": {
+          "avg": false,
+          "current": true,
+          "max": true,
+          "min": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "count(kube_pod_info{created_by_name=~\"$Pod\",namespace=\"$namespace\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "Executor Counts ",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Executors Spawned",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": null,
+        "decimals": 0,
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 9,
+          "w": 6,
+          "x": 8,
+          "y": 89
+        },
+        "hiddenSeries": false,
+        "id": 87,
+        "legend": {
+          "avg": false,
+          "current": true,
+          "max": true,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "links": [],
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "8.0.5",
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "container_network_receive_packets_dropped_total{pod=~\"$Pod|$executor\",namespace=\"$namespace\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod_name }} - Receive",
+            "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "container_network_transmit_packets_dropped_total{pod=~\"$Pod|$executor\",namespace=\"$namespace\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ pod_name }} - Transmit",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Packets Dropped : Network",
+        "tooltip": {
+          "shared": true,
+          "sort": 2,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "columns": [],
+        "datasource": null,
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 9,
+          "w": 10,
+          "x": 14,
+          "y": 89
+        },
+        "hideTimeOverride": true,
+        "id": 80,
+        "links": [],
+        "pageSize": 100,
+        "repeat": null,
+        "repeatDirection": "h",
+        "scroll": true,
+        "showHeader": true,
+        "sort": {
+          "col": 19,
+          "desc": false
+        },
+        "styles": [
+          {
+            "alias": "",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": ".beta*",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": ".*kub.*",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "Value #.*[A|B]*",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "Time",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": ".*is_.*",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "spark",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "job",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": ".*i[m|s].*",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "__name__",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "name.*",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "Kubernetes Pod Slice",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "id",
+            "sanitize": false,
+            "thresholds": [],
+            "type": "string",
+            "unit": "short"
+          },
+          {
+            "alias": "Pod",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "pod_name",
+            "thresholds": [],
+            "type": "string",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "instance",
+            "thresholds": [],
+            "type": "string",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "container_name",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": ".*install.*",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "align": "auto",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "interface",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          }
+        ],
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "container_network_receive_bytes_total{pod=~\"$executor\",namespace=\"$namespace\"}",
+            "format": "table",
+            "instant": true,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "container_network_receive_bytes_total{pod=~\"$Pod\",namespace=\"$namespace\"}",
+            "format": "table",
+            "instant": true,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "B"
+          },
+          {
+            "expr": "",
+            "format": "table",
+            "intervalFactor": 1,
+            "refId": "C"
+          }
+        ],
+        "title": "Kubernetes Pod Slice",
+        "transform": "table",
+        "type": "table-old"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 30,
+    "style": "dark",
+    "tags": [
+      "data-services",
+      "spark"
+    ],
+    "templating": {
+      "list": [
+        {
+          "allValue": null,
+          "current": {
+            "isNone": true,
+            "selected": false,
+            "text": "None",
+            "value": ""
+          },
+          "datasource": null,
+          "definition": "label_values(kube_pod_info{namespace=~\"fpe-tools-(stg)\"},namespace)",
+          "description": null,
+          "error": null,
+          "hide": 0,
+          "includeAll": false,
+          "label": null,
+          "multi": false,
+          "name": "namespace",
+          "options": [],
+          "query": {
+            "query": "label_values(kube_pod_info{namespace=~\"fpe-tools-(stg)\"},namespace)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "isNone": true,
+            "selected": false,
+            "text": "None",
+            "value": ""
+          },
+          "datasource": null,
+          "definition": "label_values(kube_pod_info{namespace=\"$namespace\"}, pod)",
+          "description": null,
+          "error": null,
+          "hide": 0,
+          "includeAll": false,
+          "label": null,
+          "multi": false,
+          "name": "Pod",
+          "options": [],
+          "query": {
+            "query": "label_values(kube_pod_info{namespace=\"$namespace\"}, pod)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 2,
+          "regex": "/.*spark.*driver/",
+          "skipUrlSync": false,
+          "sort": 1,
+          "tagValuesQuery": "",
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "isNone": true,
+            "selected": false,
+            "text": "None",
+            "value": ""
+          },
+          "datasource": null,
+          "definition": "label_values(kube_pod_info{pod=\"$Pod\"}, pod)",
+          "description": null,
+          "error": null,
+          "hide": 2,
+          "includeAll": false,
+          "label": null,
+          "multi": false,
+          "name": "Pod_ip",
+          "options": [],
+          "query": {
+            "query": "label_values(kube_pod_info{pod=\"$Pod\"}, pod)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "isNone": true,
+            "selected": false,
+            "text": "None",
+            "value": ""
+          },
+          "datasource": null,
+          "definition": "",
+          "description": null,
+          "error": null,
+          "hide": 2,
+          "includeAll": false,
+          "label": null,
+          "multi": true,
+          "name": "phase",
+          "options": [],
+          "query": {
+            "query": "query_result(kube_pod_status_phase{pod=\"$Pod\"})",
+            "refId": "Prometheus-phase-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": ".*phase=\"([^\"]*).*} 1 .*",
+          "skipUrlSync": false,
+          "sort": 4,
+          "tagValuesQuery": "",
+          "tagsQuery": "",
+          "type": "query"
+        },
+        {
+          "allValue": "$executor",
+          "current": {
+            "isNone": true,
+            "selected": false,
+            "text": "None",
+            "value": ""
+          },
+          "datasource": null,
+          "definition": "",
+          "description": null,
+          "error": null,
+          "hide": 0,
+          "includeAll": false,
+          "label": "Executor ID",
+          "multi": true,
+          "name": "executor",
+          "options": [],
+          "query": {
+            "query": "label_values(kube_pod_info{created_by_name=~\"$Pod\"},pod)",
+            "refId": "Prometheus-executor-Variable-Query"
+          },
+          "refresh": 2,
+          "regex": "/.*exec/",
+          "skipUrlSync": false,
+          "sort": 1,
+          "tagValuesQuery": "",
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        }
+      ]
+    },
+    "time": {
+      "from": "now-3h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "timezone": "browser",
+    "title": "Data Services / Apache Spark - Performance Metrics"
+  },
+  "status": {}
+}
