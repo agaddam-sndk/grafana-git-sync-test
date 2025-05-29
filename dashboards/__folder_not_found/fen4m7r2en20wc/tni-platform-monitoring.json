@@ -28,99 +28,6 @@
     "panels": [
       {
         "datasource": {
-          "type": "prometheus",
-          "uid": "PC96415006F908B67"
-        },
-        "description": "overall volume usage percentage for the Kubernetes namespace",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green"
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 0,
-          "y": 0
-        },
-        "id": 30,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "hideZeros": false,
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "12.0.0",
-        "targets": [
-          {
-            "editorMode": "code",
-            "expr": "(sum(kubelet_volume_stats_used_bytes{namespace='fpe-tools-stg'}) / sum(kubelet_volume_stats_capacity_bytes{namespace='fpe-tools-stg'})) * 100",
-            "legendFormat": "__auto",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Volume Usage Percentage",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
           "uid": "$datasource"
         },
         "description": "Fraction of the cluster's total memory is currently used",
@@ -380,17 +287,45 @@
           "type": "prometheus",
           "uid": "PC96415006F908B67"
         },
+        "description": "overall volume usage percentage for the Kubernetes namespace",
         "fieldConfig": {
           "defaults": {
-            "custom": {
-              "align": "auto",
-              "cellOptions": {
-                "type": "auto"
-              },
-              "inspect": false
+            "color": {
+              "mode": "palette-classic"
             },
-            "decimals": 2,
-            "displayName": "",
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
             "mappings": [],
             "thresholds": {
               "mode": "absolute",
@@ -403,370 +338,42 @@
                   "value": 80
                 }
               ]
-            },
-            "unit": "short"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Time"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "Time"
-                },
-                {
-                  "id": "custom.hidden",
-                  "value": true
-                },
-                {
-                  "id": "custom.align"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Value #A"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "Running Pods"
-                },
-                {
-                  "id": "unit",
-                  "value": "short"
-                },
-                {
-                  "id": "custom.align"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Value #B"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "CPU Usage"
-                },
-                {
-                  "id": "unit",
-                  "value": "short"
-                },
-                {
-                  "id": "decimals",
-                  "value": 2
-                },
-                {
-                  "id": "custom.align"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Value #C"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "CPU Requests"
-                },
-                {
-                  "id": "unit",
-                  "value": "short"
-                },
-                {
-                  "id": "decimals",
-                  "value": 2
-                },
-                {
-                  "id": "custom.align"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Value #D"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "CPU Requests %"
-                },
-                {
-                  "id": "unit",
-                  "value": "percentunit"
-                },
-                {
-                  "id": "decimals",
-                  "value": 2
-                },
-                {
-                  "id": "custom.align"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Value #E"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "CPU Limits"
-                },
-                {
-                  "id": "unit",
-                  "value": "short"
-                },
-                {
-                  "id": "decimals",
-                  "value": 2
-                },
-                {
-                  "id": "custom.align"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Value #F"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "CPU Limits %"
-                },
-                {
-                  "id": "unit",
-                  "value": "percentunit"
-                },
-                {
-                  "id": "decimals",
-                  "value": 2
-                },
-                {
-                  "id": "custom.align"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "workload"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "Workload"
-                },
-                {
-                  "id": "unit",
-                  "value": "short"
-                },
-                {
-                  "id": "decimals",
-                  "value": 2
-                },
-                {
-                  "id": "custom.align"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "workload_type"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "Workload Type"
-                },
-                {
-                  "id": "unit",
-                  "value": "short"
-                },
-                {
-                  "id": "decimals",
-                  "value": 2
-                },
-                {
-                  "id": "custom.align"
-                }
-              ]
             }
-          ]
+          },
+          "overrides": []
         },
         "gridPos": {
-          "h": 9,
-          "w": 13,
+          "h": 8,
+          "w": 12,
           "x": 0,
           "y": 15
         },
-        "id": 2,
+        "id": 30,
         "options": {
-          "cellHeight": "sm",
-          "footer": {
-            "countRows": false,
-            "fields": "",
-            "reducer": [
-              "sum"
-            ],
-            "show": false
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
           },
-          "showHeader": true
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
         },
         "pluginVersion": "12.0.0",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PC96415006F908B67"
-            },
             "editorMode": "code",
-            "expr": "count(namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}) by (workload, workload_type)",
-            "format": "table",
-            "instant": true,
-            "intervalFactor": 2,
-            "legendFormat": "",
-            "refId": "A",
-            "step": 10
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PC96415006F908B67"
-            },
-            "editorMode": "code",
-            "expr": "sum(\r\n  node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{cluster=\"$cluster\", namespace=\"$namespace\"}\r\n* on(namespace,pod)\r\n  group_left(workload, workload_type) namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}\r\n) by (workload, workload_type)\r\n",
-            "hide": false,
-            "instant": false,
+            "expr": "(sum(kubelet_volume_stats_used_bytes{namespace='fpe-tools-stg'}) / sum(kubelet_volume_stats_capacity_bytes{namespace='fpe-tools-stg'})) * 100",
             "legendFormat": "__auto",
             "range": true,
-            "refId": "B"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PC96415006F908B67"
-            },
-            "editorMode": "code",
-            "expr": "sum(\r\n  kube_pod_container_resource_requests{cluster=\"$cluster\", namespace=\"$namespace\", resource=\"cpu\"}\r\n* on(namespace,pod)\r\n  group_left(workload, workload_type) namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}\r\n) by (workload, workload_type)\r\n",
-            "hide": false,
-            "instant": false,
-            "legendFormat": "__auto",
-            "range": true,
-            "refId": "C"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PC96415006F908B67"
-            },
-            "editorMode": "code",
-            "expr": "sum(\r\n  node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{cluster=\"$cluster\", namespace=\"$namespace\"}\r\n* on(namespace,pod)\r\n  group_left(workload, workload_type) namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}\r\n) by (workload, workload_type)\r\n/sum(\r\n  kube_pod_container_resource_requests{cluster=\"$cluster\", namespace=\"$namespace\", resource=\"cpu\"}\r\n* on(namespace,pod)\r\n  group_left(workload, workload_type) namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}\r\n) by (workload, workload_type)\r\n",
-            "hide": false,
-            "instant": false,
-            "legendFormat": "__auto",
-            "range": true,
-            "refId": "D"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PC96415006F908B67"
-            },
-            "editorMode": "code",
-            "expr": "sum(\r\n  kube_pod_container_resource_limits{cluster=\"$cluster\", namespace=\"$namespace\", resource=\"cpu\"}\r\n* on(namespace,pod)\r\n  group_left(workload, workload_type) namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}\r\n) by (workload, workload_type)\r\n",
-            "hide": false,
-            "instant": false,
-            "legendFormat": "__auto",
-            "range": true,
-            "refId": "E"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PC96415006F908B67"
-            },
-            "editorMode": "code",
-            "expr": "sum(\r\n  node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{cluster=\"$cluster\", namespace=\"$namespace\"}\r\n* on(namespace,pod)\r\n  group_left(workload, workload_type) namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}\r\n) by (workload, workload_type)\r\n/sum(\r\n  kube_pod_container_resource_limits{cluster=\"$cluster\", namespace=\"$namespace\", resource=\"cpu\"}\r\n* on(namespace,pod)\r\n  group_left(workload, workload_type) namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}\r\n) by (workload, workload_type)\r\n",
-            "hide": false,
-            "instant": false,
-            "legendFormat": "__auto",
-            "range": true,
-            "refId": "F"
+            "refId": "A"
           }
         ],
-        "title": "CPU Quota",
-        "transformations": [
-          {
-            "id": "filterFieldsByName",
-            "options": {
-              "include": {
-                "names": [
-                  "Value #B",
-                  "Value #C",
-                  "Value #E",
-                  "workload",
-                  "Value #A"
-                ]
-              }
-            }
-          },
-          {
-            "id": "calculateField",
-            "options": {
-              "alias": "CPU Usage Per Pod",
-              "binary": {
-                "left": {
-                  "matcher": {
-                    "id": "byName",
-                    "options": "Value #B"
-                  }
-                },
-                "operator": "/",
-                "right": {
-                  "matcher": {
-                    "id": "byName",
-                    "options": "Value #A"
-                  }
-                }
-              },
-              "mode": "binary",
-              "reduce": {
-                "reducer": "sum"
-              },
-              "replaceFields": true
-            }
-          },
-          {
-            "id": "filterFieldsByName",
-            "options": {
-              "include": {
-                "names": [
-                  "Value #A",
-                  "Value #B",
-                  "Value #C",
-                  "Value #E",
-                  "workload"
-                ]
-              }
-            }
-          }
-        ],
-        "type": "table"
+        "title": "Volume Usage Percentage",
+        "type": "timeseries"
       },
       {
         "datasource": {
@@ -1120,9 +727,6 @@
         },
         "fieldConfig": {
           "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
             "custom": {
               "align": "auto",
               "cellOptions": {
@@ -1130,6 +734,8 @@
               },
               "inspect": false
             },
+            "decimals": 2,
+            "displayName": "",
             "mappings": [],
             "thresholds": {
               "mode": "absolute",
@@ -1142,22 +748,26 @@
                   "value": 80
                 }
               ]
-            }
+            },
+            "unit": "short"
           },
           "overrides": [
             {
               "matcher": {
                 "id": "byName",
-                "options": "Value #A"
+                "options": "Time"
               },
               "properties": [
                 {
                   "id": "displayName",
-                  "value": "Max Replica"
+                  "value": "Time"
                 },
                 {
-                  "id": "noValue",
-                  "value": "NA"
+                  "id": "custom.hidden",
+                  "value": true
+                },
+                {
+                  "id": "custom.align"
                 }
               ]
             },
@@ -1169,23 +779,187 @@
               "properties": [
                 {
                   "id": "displayName",
-                  "value": "Min Replica"
+                  "value": "Running Pods"
                 },
                 {
-                  "id": "noValue",
-                  "value": "NA"
+                  "id": "unit",
+                  "value": "short"
+                },
+                {
+                  "id": "custom.align"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Value #B"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "CPU Usage"
+                },
+                {
+                  "id": "unit",
+                  "value": "short"
+                },
+                {
+                  "id": "decimals",
+                  "value": 2
+                },
+                {
+                  "id": "custom.align"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Value #C"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "CPU Requests"
+                },
+                {
+                  "id": "unit",
+                  "value": "short"
+                },
+                {
+                  "id": "decimals",
+                  "value": 2
+                },
+                {
+                  "id": "custom.align"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Value #D"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "CPU Requests %"
+                },
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                },
+                {
+                  "id": "decimals",
+                  "value": 2
+                },
+                {
+                  "id": "custom.align"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Value #E"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "CPU Limits"
+                },
+                {
+                  "id": "unit",
+                  "value": "short"
+                },
+                {
+                  "id": "decimals",
+                  "value": 2
+                },
+                {
+                  "id": "custom.align"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Value #F"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "CPU Limits %"
+                },
+                {
+                  "id": "unit",
+                  "value": "percentunit"
+                },
+                {
+                  "id": "decimals",
+                  "value": 2
+                },
+                {
+                  "id": "custom.align"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "workload"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Workload"
+                },
+                {
+                  "id": "unit",
+                  "value": "short"
+                },
+                {
+                  "id": "decimals",
+                  "value": 2
+                },
+                {
+                  "id": "custom.align"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "workload_type"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Workload Type"
+                },
+                {
+                  "id": "unit",
+                  "value": "short"
+                },
+                {
+                  "id": "decimals",
+                  "value": 2
+                },
+                {
+                  "id": "custom.align"
                 }
               ]
             }
           ]
         },
         "gridPos": {
-          "h": 7,
+          "h": 9,
           "w": 13,
           "x": 0,
-          "y": 24
+          "y": 23
         },
-        "id": 23,
+        "id": 2,
         "options": {
           "cellHeight": "sm",
           "footer": {
@@ -1196,7 +970,6 @@
             ],
             "show": false
           },
-          "frameIndex": 0,
           "showHeader": true
         },
         "pluginVersion": "12.0.0",
@@ -1207,53 +980,134 @@
               "uid": "PC96415006F908B67"
             },
             "editorMode": "code",
-            "expr": "kube_horizontalpodautoscaler_spec_min_replicas{namespace=\"fpe-tools-stg\"} ",
+            "expr": "count(namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}) by (workload, workload_type)",
             "format": "table",
+            "instant": true,
+            "intervalFactor": 2,
+            "legendFormat": "",
+            "refId": "A",
+            "step": 10
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PC96415006F908B67"
+            },
+            "editorMode": "code",
+            "expr": "sum(\r\n  node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{cluster=\"$cluster\", namespace=\"$namespace\"}\r\n* on(namespace,pod)\r\n  group_left(workload, workload_type) namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}\r\n) by (workload, workload_type)\r\n",
+            "hide": false,
+            "instant": false,
             "legendFormat": "__auto",
             "range": true,
-            "refId": "A"
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PC96415006F908B67"
+            },
+            "editorMode": "code",
+            "expr": "sum(\r\n  kube_pod_container_resource_requests{cluster=\"$cluster\", namespace=\"$namespace\", resource=\"cpu\"}\r\n* on(namespace,pod)\r\n  group_left(workload, workload_type) namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}\r\n) by (workload, workload_type)\r\n",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PC96415006F908B67"
+            },
+            "editorMode": "code",
+            "expr": "sum(\r\n  node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{cluster=\"$cluster\", namespace=\"$namespace\"}\r\n* on(namespace,pod)\r\n  group_left(workload, workload_type) namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}\r\n) by (workload, workload_type)\r\n/sum(\r\n  kube_pod_container_resource_requests{cluster=\"$cluster\", namespace=\"$namespace\", resource=\"cpu\"}\r\n* on(namespace,pod)\r\n  group_left(workload, workload_type) namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}\r\n) by (workload, workload_type)\r\n",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PC96415006F908B67"
+            },
+            "editorMode": "code",
+            "expr": "sum(\r\n  kube_pod_container_resource_limits{cluster=\"$cluster\", namespace=\"$namespace\", resource=\"cpu\"}\r\n* on(namespace,pod)\r\n  group_left(workload, workload_type) namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}\r\n) by (workload, workload_type)\r\n",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PC96415006F908B67"
+            },
+            "editorMode": "code",
+            "expr": "sum(\r\n  node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{cluster=\"$cluster\", namespace=\"$namespace\"}\r\n* on(namespace,pod)\r\n  group_left(workload, workload_type) namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}\r\n) by (workload, workload_type)\r\n/sum(\r\n  kube_pod_container_resource_limits{cluster=\"$cluster\", namespace=\"$namespace\", resource=\"cpu\"}\r\n* on(namespace,pod)\r\n  group_left(workload, workload_type) namespace_workload_pod:kube_pod_owner:relabel{cluster=\"$cluster\", namespace=\"$namespace\", workload_type=\"$type\"}\r\n) by (workload, workload_type)\r\n",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "F"
           }
         ],
-        "title": "Services Enabled with HPA - Min Replica",
+        "title": "CPU Quota",
         "transformations": [
           {
             "id": "filterFieldsByName",
             "options": {
               "include": {
                 "names": [
-                  "Value",
-                  "horizontalpodautoscaler"
+                  "Value #B",
+                  "Value #C",
+                  "Value #E",
+                  "workload",
+                  "Value #A"
                 ]
               }
             }
           },
           {
-            "id": "groupBy",
+            "id": "calculateField",
             "options": {
-              "fields": {
-                "Value": {
-                  "aggregations": [],
-                  "operation": "groupby"
+              "alias": "CPU Usage Per Pod",
+              "binary": {
+                "left": {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Value #B"
+                  }
                 },
-                "Value #A": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Value #B": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "horizontalpodautoscaler": {
-                  "aggregations": [],
-                  "operation": "groupby"
+                "operator": "/",
+                "right": {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Value #A"
+                  }
                 }
-              }
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              },
+              "replaceFields": true
             }
           },
           {
-            "id": "labelsToFields",
+            "id": "filterFieldsByName",
             "options": {
-              "mode": "columns"
+              "include": {
+                "names": [
+                  "Value #A",
+                  "Value #B",
+                  "Value #C",
+                  "Value #E",
+                  "workload"
+                ]
+              }
             }
           }
         ],
@@ -1352,6 +1206,152 @@
                   "operation": "groupby"
                 }
               }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PC96415006F908B67"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Value #A"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Max Replica"
+                },
+                {
+                  "id": "noValue",
+                  "value": "NA"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Value #A"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Min Replica"
+                },
+                {
+                  "id": "noValue",
+                  "value": "NA"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 13,
+          "x": 0,
+          "y": 32
+        },
+        "id": 23,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "frameIndex": 0,
+          "showHeader": true
+        },
+        "pluginVersion": "12.0.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PC96415006F908B67"
+            },
+            "editorMode": "code",
+            "expr": "kube_horizontalpodautoscaler_spec_min_replicas{namespace=\"fpe-tools-stg\"} ",
+            "format": "table",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Services Enabled with HPA - Min Replica",
+        "transformations": [
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "include": {
+                "names": [
+                  "Value",
+                  "horizontalpodautoscaler"
+                ]
+              }
+            }
+          },
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Value": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "Value #A": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "Value #B": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "horizontalpodautoscaler": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "labelsToFields",
+            "options": {
+              "mode": "columns"
             }
           }
         ],
