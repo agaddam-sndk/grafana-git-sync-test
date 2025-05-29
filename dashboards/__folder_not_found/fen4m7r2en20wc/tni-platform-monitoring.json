@@ -30,6 +30,7 @@
         "datasource": {
           "uid": "$datasource"
         },
+        "description": "Fraction of the cluster's total memory is currently used",
         "fieldConfig": {
           "defaults": {
             "color": {
