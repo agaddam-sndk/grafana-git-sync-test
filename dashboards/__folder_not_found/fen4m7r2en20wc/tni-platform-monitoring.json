@@ -94,6 +94,7 @@
           "type": "prometheus",
           "uid": "PC96415006F908B67"
         },
+        "description": "Represents the amount of storage (in bytes) requested by a PersistentVolumeClaim (PVC).",
         "fieldConfig": {
           "defaults": {
             "color": {
