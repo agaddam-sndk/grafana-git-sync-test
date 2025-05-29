@@ -1,5 +1,5 @@
 {
-  "apiVersion": "dashboard.grafana.app/v0alpha1",
+  "apiVersion": "dashboard.grafana.app/v1beta1",
   "kind": "Dashboard",
   "metadata": {
     "name": "a89a4f25-5991-42db-8a82-d96479090c82"
@@ -172,7 +172,7 @@
               "uid": "PC96415006F908B67"
             },
             "editorMode": "code",
-            "expr": "kube_persistentvolumeclaim_resource_requests_storage_bytes{namespace=\"fpe-tools-prd\"}",
+            "expr": "kube_persistentvolumeclaim_resource_requests_storage_bytes{namespace=\"fpe-tools-stg\"}",
             "format": "table",
             "legendFormat": "__auto",
             "range": true,
@@ -1111,7 +1111,7 @@
               "uid": "PC96415006F908B67"
             },
             "editorMode": "code",
-            "expr": "kube_horizontalpodautoscaler_spec_min_replicas{namespace=\"fpe-tools-prd\"} ",
+            "expr": "kube_horizontalpodautoscaler_spec_min_replicas{namespace=\"fpe-tools-stg\"} ",
             "format": "table",
             "legendFormat": "__auto",
             "range": true,
@@ -1223,7 +1223,7 @@
               "uid": "PC96415006F908B67"
             },
             "editorMode": "code",
-            "expr": "kube_horizontalpodautoscaler_spec_max_replicas{namespace=\"fpe-tools-prd\"}",
+            "expr": "kube_horizontalpodautoscaler_spec_max_replicas{namespace=\"fpe-tools-stg\"}",
             "format": "table",
             "legendFormat": "__auto",
             "range": true,
@@ -1289,14 +1289,14 @@
             "type": "prometheus",
             "uid": "PC96415006F908B67"
           },
-          "definition": "label_values(kube_pod_info{e2_cluster=\"ibn-prd01\"},$cluster)",
+          "definition": "label_values(kube_pod_info{e2_cluster=\"uls-stg01\"},$cluster)",
           "hide": 2,
           "includeAll": false,
           "name": "cluster",
           "options": [],
           "query": {
             "qryType": 1,
-            "query": "label_values(kube_pod_info{e2_cluster=\"ibn-prd01\"},$cluster)",
+            "query": "label_values(kube_pod_info{e2_cluster=\"uls-stg01\"},$cluster)",
             "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 2,
@@ -1334,13 +1334,13 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "definition": "label_values(kube_pod_info{cluster=\"$cluster\", namespace=~\"fpe-tools-prd\"},namespace)",
+          "definition": "label_values(kube_pod_info{cluster=\"$cluster\", namespace=~\"fpe-tools-stg\"},namespace)",
           "includeAll": false,
           "name": "namespace",
           "options": [],
           "query": {
             "qryType": 1,
-            "query": "label_values(kube_pod_info{cluster=\"$cluster\", namespace=~\"fpe-tools-prd\"},namespace)",
+            "query": "label_values(kube_pod_info{cluster=\"$cluster\", namespace=~\"fpe-tools-stg\"},namespace)",
             "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 2,
