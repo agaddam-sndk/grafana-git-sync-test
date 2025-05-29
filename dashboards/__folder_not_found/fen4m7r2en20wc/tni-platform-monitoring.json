@@ -217,6 +217,7 @@
           "type": "prometheus",
           "uid": "$datasource"
         },
+        "description": "Percentage of total cluster CPU cores are being used by containers in namespace. Example: Containers in namespace are using 2.5 CPU cores (on average).Your cluster has 16 CPU cores total. (2.5 / 16) * 100 = 15.625% So the namespace is using ~15.6% of the total cluster CPU capacity.",
         "fieldConfig": {
           "defaults": {
             "color": {
